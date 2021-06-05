@@ -10,8 +10,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+/*
+Класс, управляющий графическим пользовательским интерфейсом
+urlTextField - поле ввода url-адреса
+outTextArea - область вывода результатов
+startButton - кнопка запуска подсчёта и вывода статистики
+ */
+
+
+
 public class Controller implements Observer {
-    Parser parser;
+    private Parser parser;
     @FXML
     private ResourceBundle resources;
 
@@ -19,35 +28,36 @@ public class Controller implements Observer {
     private URL location;
 
     @FXML
-    private Button start_button;
+    private Button startButton;
 
     @FXML
-    private TextField url_textField;
+    private TextField urlTextField;
 
     @FXML
-    private TextArea out_textArea;
+    private TextArea outTextArea;
+/*
+Вывод сообщений от наблюдаемого объекта (Observable) Parser parser
+ */
+    @Override
+    public void update(Observable o, Object arg) {
+        outTextArea.appendText(arg + "\n");
+    }
 
     @FXML
     void initialize() {
         parser = new Parser();
         parser.addObserver(this);
 
-        start_button.setOnAction(event -> {
-            Map<String, Integer> wordList = parser.getWordsFromUrl(url_textField.getText());
-            if(wordList != null){
+        startButton.setOnAction(event -> {
+            Map<String, Integer> wordList = parser.getWordsFromUrl(urlTextField.getText());
+            if (wordList != null) {
                 StringBuilder result = new StringBuilder();
                 Set<String> keys = wordList.keySet();
                 for (String str : keys) {
                     result.append(str + " --> " + wordList.get(str) + "\n");
                 }
-                out_textArea.setText(result.toString());
+                outTextArea.setText(result.toString());
             }
         });
     }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        out_textArea.appendText(arg + "\n");
-    }
 }
-
