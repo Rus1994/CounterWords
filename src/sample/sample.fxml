@@ -5,10 +5,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="540" minWidth="428" prefHeight="540.0" prefWidth="428.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="540" minWidth="428" prefHeight="540.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Button fx:id="start_button" layoutX="300.0" layoutY="51.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="82.0" text="Пуск" />
-      <TextField fx:id="url_textField" layoutX="58.0" layoutY="51.0" promptText="URL адрес" />
-      <TextArea fx:id="out_textArea" layoutX="58.0" layoutY="116.0" prefHeight="387.0" prefWidth="324.0" />
+      <Button fx:id="start_button" layoutX="686.0" layoutY="51.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="116.0" text="Пуск" />
+      <TextField fx:id="url_textField" layoutX="58.0" layoutY="51.0" prefHeight="31.0" prefWidth="573.0" promptText="URL адрес" />
+      <TextArea fx:id="out_textArea" layoutX="58.0" layoutY="116.0" prefHeight="387.0" prefWidth="744.0" />
    </children>
 </Pane>

@@ -1,15 +1,17 @@
 package sample;
 
+
 import java.net.URL;
 import java.util.*;
+import java.util.Observer;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class Controller {
-
+public class Controller implements Observer {
+    Parser parser;
     @FXML
     private ResourceBundle resources;
 
@@ -27,11 +29,12 @@ public class Controller {
 
     @FXML
     void initialize() {
+        parser = new Parser();
+        parser.addObserver(this);
+
         start_button.setOnAction(event -> {
-            Map<String, Integer> wordList = Parser.getWordsFromUrl(url_textField.getText());
-            if(wordList == null){
-                out_textArea.setText("Не удаётся получить веб-страницу. Проверьте корректность введённого url-адреса.");
-            } else {
+            Map<String, Integer> wordList = parser.getWordsFromUrl(url_textField.getText());
+            if(wordList != null){
                 StringBuilder result = new StringBuilder();
                 Set<String> keys = wordList.keySet();
                 for (String str : keys) {
@@ -40,6 +43,11 @@ public class Controller {
                 out_textArea.setText(result.toString());
             }
         });
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        out_textArea.appendText(arg + "\n");
     }
 }
 

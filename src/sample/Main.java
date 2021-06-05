@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Counter Words");
-        primaryStage.setScene(new Scene(root, 428, 540));
+        primaryStage.setScene(new Scene(root, 850, 540));
         primaryStage.show();
     }
 
