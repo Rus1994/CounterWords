@@ -1,10 +1,8 @@
 package sample;
 
-
 import java.net.URL;
 import java.util.*;
 import java.util.Observer;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -16,8 +14,6 @@ urlTextField - поле ввода url-адреса
 outTextArea - область вывода результатов
 startButton - кнопка запуска подсчёта и вывода статистики
  */
-
-
 
 public class Controller implements Observer {
     private Parser parser;
@@ -35,9 +31,10 @@ public class Controller implements Observer {
 
     @FXML
     private TextArea outTextArea;
-/*
-Вывод сообщений от наблюдаемого объекта (Observable) Parser parser
- */
+
+    /*
+    Вывод сообщений от наблюдаемого объекта (Observable) Parser parser
+     */
     @Override
     public void update(Observable o, Object arg) {
         outTextArea.appendText(arg + "\n");
